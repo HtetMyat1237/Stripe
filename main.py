@@ -3,6 +3,7 @@
 # Copy kro Bs Credit De dena Dost 
 
 import threading
+import os
 import requests
 import telebot
 from telebot import types
@@ -10,8 +11,8 @@ from gatet import Tele
 from keepalive import keep_alive# Import the Tele function from gatet.py
 
 # Bot configuration
-TOKEN = "7564887912:AAG08n0j_lxkgOrOy8FOP8jOOTHZdOCuuwM"  # Replace with your bot token
-OWNER_ID = 5272811285 # Replace with your owner ID
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')  # Replace with your bot token
+OWNER_ID = os.getenv('OWNER_ID') # Replace with your owner ID
 
 # Initialize the bot
 bot = telebot.TeleBot(TOKEN, parse_mode="HTML")
