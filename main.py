@@ -6,7 +6,8 @@ import threading
 import requests
 import telebot
 from telebot import types
-from gatet import Tele  # Import the Tele function from gatet.py
+from gatet import Tele
+from keepalive import keep_alive# Import the Tele function from gatet.py
 
 # Bot configuration
 TOKEN = "7564887912:AAG08n0j_lxkgOrOy8FOP8jOOTHZdOCuuwM"  # Replace with your bot token
@@ -222,5 +223,6 @@ def status(message):
         bot.reply_to(message, "𝙉𝙤 𝙛𝙞𝙡𝙚 𝙥𝙧𝙤𝙘𝙚𝙨𝙨𝙞𝙣𝙜 𝙞𝙣 𝙥𝙧𝙤𝙜𝙧𝙚𝙨𝙨 𝙖𝙩 𝙩𝙝𝙚 𝙢𝙤𝙢𝙚𝙣𝙩.")
 
 # Start the bot
+keep_alive()
 print("running......")
 bot.polling(none_stop=True)
