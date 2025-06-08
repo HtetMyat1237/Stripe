@@ -3,17 +3,16 @@
 # Copy kro Bs Credit De dena Dost 
 
 import threading
-import os
 import requests
 import telebot
 from telebot import types
-from gatet import Tele
-from keepalive import keep_alive# Import the Tele function from gatet.py
+from gatet import Tele  # Import the Tele function from gatet.py
 
-# Bot configuration
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')  # Replace with your bot token
-OWNER_ID = os.getenv('OWNER_ID') # Replace with your owner ID
-bot = telebot.TeleBot(TOKEN, parse_mode="HTML")
+OWNER_ID = os.getenv('OWNER_ID')
+
+# Initialize the bot
+bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN, parse_mode="HTML")
 
 # File paths
 APPROVED_USERS_FILE = "approved_users.txt"
@@ -75,7 +74,7 @@ def start(message):
         bot.reply_to(message, "𝗬𝗼𝘂 𝗔𝗿𝗲 𝗙𝘂𝗰𝗸𝗲𝗱 🖕")
         return
     if user_id not in load_approved_users():
-        bot.reply_to(message, "𝘠𝘰𝘶 𝘢𝘳𝘦 𝘯𝘰𝘵 𝘢𝘱𝘱𝘳𝘰𝘷𝘦𝘥 𝘵𝘰 𝘶𝘴𝘦 𝘵𝘩𝘪𝘴 𝘣𝘰𝘵. 𝘊𝘰𝘯𝘵𝘢𝘤𝘵 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳- @myself_satyam")
+        bot.reply_to(message, "𝘠𝘰𝘶 𝘢𝘳𝘦 𝘯𝘰𝘵 𝘢𝘱𝘱𝘳𝘰𝘷𝘦𝘥 𝘵𝘰 𝘶𝘴𝘦 𝘵𝘩𝘪𝘴 𝘣𝘰𝘵. 𝘊𝘰𝘯𝘵𝘢𝘤𝘵 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳- @Kamisama_hm")
         return
     bot.reply_to(message, "𝗦𝗲𝗻𝗱 𝗧𝗵𝗲 𝗙𝗶𝗹𝗲 𝗧𝗼 𝗖𝗵𝗲𝗰𝗸 ✔️")
 
@@ -111,10 +110,10 @@ def ban_user_command(message):
 def handle_document(message):
     user_id = str(message.from_user.id)
     if user_id in load_banned_users():
-        bot.reply_to(message, "𝘠𝘰𝘶 𝘢𝘳𝘦 𝘯𝘰𝘵 𝘢𝘱𝘱𝘳𝘰𝘷𝘦𝘥 𝘵𝘰 𝘶𝘴𝘦 𝘵𝘩𝘪𝘴 𝘣𝘰𝘵. 𝘊𝘰𝘯𝘵𝘢𝘤𝘵 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳- @myself_satyam")
+        bot.reply_to(message, "𝘠𝘰𝘶 𝘢𝘳𝘦 𝘯𝘰𝘵 𝘢𝘱𝘱𝘳𝘰𝘷𝘦𝘥 𝘵𝘰 𝘶𝘴𝘦 𝘵𝘩𝘪𝘴 𝘣𝘰𝘵. 𝘊𝘰𝘯𝘵𝘢𝘤𝘵 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳- @Kamisama_hm")
         return
     if user_id not in load_approved_users():
-        bot.reply_to(message, "𝘊𝘰𝘯𝘵𝘢𝘤𝘵 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳- @myself_satyam")
+        bot.reply_to(message, "𝘊𝘰𝘯𝘵𝘢𝘤𝘵 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳- @Kamisama_hm")
         return
 
     if processing.get(user_id, False):
