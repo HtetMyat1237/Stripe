@@ -179,7 +179,7 @@ def process_cards(message, file_path, user_id, ko):
                     last = "Your card was declined."
 
                 # Update counts based on response
-                if "succeeded" in last:
+                if "ok" in last:
                     ch += 1
                     approved_message = generate_approved_message(cc, "Approved", bin_info, "4.6")
                     bot.send_message(message.chat.id, approved_message)  # Send to user's DM
