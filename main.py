@@ -116,7 +116,7 @@ def handle_document(message):
         bot.reply_to(message, "𝘠𝘰𝘶 𝘢𝘳𝘦 𝘯𝘰𝘵 𝘢𝘱𝘱𝘳𝘰𝘷𝘦𝘥 𝘵𝘰 𝘶𝘴𝘦 𝘵𝘩𝘪𝘴 𝘣𝘰𝘵. 𝘊𝘰𝘯𝘵𝘢𝘤𝘵 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳- @Kamisama_hm")
         return
     if user_id not in load_approved_users():
-        bot.reply_to(message, "𝘊𝘰𝘯𝘵𝘢𝘤𝘵 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳- @Kamisama_hm)
+        bot.reply_to(message, "𝘊𝘰𝘯𝘵𝘢𝘤𝘵 𝘵𝘩𝘦 𝘰𝘸𝘯𝘦𝘳- @Kamisama_hm")
         return
 
     if processing.get(user_id, False):
