@@ -85,7 +85,7 @@ def Tele(ccx):
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': user_agent,
+    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36',
     'x-csrftoken': 's8u2Ph6T2J8pRftNmpCUEa1O8XKivW3KJ19KBEOgfO92JUr10dH8SFRMQPIvjtsI',
     'x-requested-with': 'XMLHttpRequest',
 }
@@ -93,7 +93,7 @@ def Tele(ccx):
     data = {
     "plan": "personal_0912_monthly",
     "token": id,
-    "csrfmiddlewaretoken": "s8u2Ph6T2J8pRftNmpCUEa1O8XKivW3KJ19KBEOgfO92JUr10dH8SFRMQPIvjtsI",
+    "csrfmiddlewaretoken":                         "s8u2Ph6T2J8pRftNmpCUEa1O8XKivW3KJ19KBEOgfO92JUr10dH8SFRMQPIvjtsI",
     "state": ["ca"],
     "add_on_ids": [""]
 }
