@@ -13,7 +13,7 @@ TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')  # Replace with your bot to
 OWNER_ID = os.getenv('OWNER_ID')
 
 # Initialize the bot
-bot = telebot.TeleBot(TOKEN, parse_mode="HTML")
+bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN, parse_mode="HTML")
 
 # File paths
 APPROVED_USERS_FILE = "approved_users.txt"
