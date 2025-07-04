@@ -6,7 +6,7 @@ import threading
 import requests
 import telebot
 from telebot import types
-from gate import Tele  # Import the Tele function from gatet.py
+from gatet import Tele  # Import the Tele function from gatet.py
 
 # Bot configurat
 BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')  # Replace with your bot token
