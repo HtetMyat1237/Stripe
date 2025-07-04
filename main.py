@@ -195,12 +195,12 @@ def process_cards(message, file_path, user_id, ko):
                     last = "Your card was declined."
 
                 # Update counts based on response
-                if "Success" in last or "redirectURL" in last:
+                if "Success" in last:
                     ck += 1
                     charged_message = generate_charged_message(cc, "Approved", bin_info, "4.6")
                     bot.send_message(message.chat.id, charged_message)  # Send to user's DM
                 
-                elif "Your card has insufficient funds." in last or "Your card does not support this type of purchase." in last:
+                elif "Your card has insufficient funds." in last or "Action required" in last or "Your card does not support this type of purchase." in last:
                     ch += 1
                     approved_message = generate_approved_message(cc, "Approved", bin_info, "4.6")
                     bot.send_message(message.chat.id, approved_message)
